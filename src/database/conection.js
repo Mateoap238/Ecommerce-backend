@@ -7,7 +7,10 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    authPlugins: {
+        mysql_native_password: () => () => require('mysql/lib/protocol/Auth').auth('mysql_native_password')
+    }
 });
 
 db.connect(err => {
