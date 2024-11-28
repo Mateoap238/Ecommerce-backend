@@ -14,7 +14,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors()); // Usa cors
+app.use(cors({ origin: '*' }));
 
 // Configura la ruta estática para servir imágenes
 const __filename = fileURLToPath(import.meta.url);
